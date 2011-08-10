@@ -20,8 +20,8 @@ The `Controller` object does not have a `[[Call]]` internal property; it is not 
 
 ## Function Properties of the Controller Object
 
-  - `queryDevicesAll()` Returns a `NodeList`
-	- `queryState( deviceId )` Returns an object descriptor that represents the current state of
+ - `queryDevicesAll()` Returns a `NodeList`
+ - `queryState( deviceId )` Returns an object descriptor that represents the current state of
 
 
 ```
