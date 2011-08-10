@@ -74,30 +74,47 @@ interface Device : EventTarget {
 
 var devices = Controller.getDevices();
 
+devices == null; // true, as no "deviceconnect" event has fired on the window
 
-// event listening...
-Array.from( devices ).forEach(function( device ) {
+// ...
 
-	device.addEventListener("interact", function( event ) {
+// "deviceconnect" would fire as a result of either connecting the device or when the first "interact" event occurs
 
-		console.log( event, device.getState() );
+window.addEventListener( "deviceconnect", setupControllers, false );
 
-	}, false );
 
-});
+function setupControllers() {
 
-// animation frame state query...
-function queryState() {
+	var devices = Controller.getDevices();
 
-	requestAnimationFrame( queryState );
+	// devices == null; // false, the "deviceconnect" event has fired on the window
 
-	var state = devices.item( 0 ).getState();
 
-	doSomethingWithControllerState( state );
+	// event listening...
+	Array.from( devices ).forEach(function( device ) {
+
+		device.addEventListener("interact", function( event ) {
+
+			console.log( event, device.getState() );
+
+		}, false );
+
+	});
+
+	// animation frame state query...
+	function queryState() {
+
+		requestAnimationFrame( queryState );
+
+		var state = devices.item( 0 ).getState();
+
+		doSomethingWithControllerState( state );
+
+	}
+
+	queryState();
 
 }
-
-queryState();
 
 
 ```
@@ -131,10 +148,15 @@ The event object of a `DeviceEvent` should provide a value property named `type`
 
 #### Events
 
+Device
+
  - **interact** Dispatched whenever the user interacts with the device
  - **connect**
  - **disconnect**
 
+Window
+
+ - **deviceconnect** Dispatched whenever a device is connected, or as first "interact" event
 
 
 
