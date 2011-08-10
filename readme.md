@@ -42,7 +42,9 @@ Note:
 
 ```
 interface DeviceList {
+
 	getter Device? item(unsigned long index);
+
 	readonly attribute unsigned long length;
 
 	// ...
