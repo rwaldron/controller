@@ -30,7 +30,7 @@ The `Controller` object does not have a `[[Call]]` internal property; it is not 
 
 # DOM Events
 
-### Current
+## Current
 
 #### Events
 
@@ -39,7 +39,7 @@ The `Controller` object does not have a `[[Call]]` internal property; it is not 
  - axismove
 
 
-### Propose
+## Propose
 
 Implement new `UIEvent` interface: `DeviceEvent`
 
