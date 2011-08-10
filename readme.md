@@ -45,6 +45,11 @@ Implement new `UIEvent` interface: `DeviceEvent`
 
 The DOM `DeviceEvent` represents events that occur as a result of the user interacting with a device (in this case, not a keyboard and not a mouse).
 
+The event object of a `DeviceEvent` should provide a value property named `state` who's value is an object descriptor representing the complete state of the device.
+
+The event object of a `DeviceEvent` should provide a value property named `type` who's value is a string that describes the event that occurred as result of of the user interacting with the device.
+
+
 #### Events
 
  - *interact*
