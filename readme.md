@@ -28,7 +28,7 @@ The `Controller` object does not have a `[[Call]]` internal property; it is not 
 
 
 
-## DOM Events
+# DOM Events
 
 ### Current
 
