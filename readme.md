@@ -20,8 +20,7 @@ The `Controller` object does not have a `[[Call]]` internal property; it is not 
 
 ## Function Properties of the Controller Object
 
- - `queryDevicesAll()` Returns a `DeviceList` of active devices
- - `queryState( deviceId )` Returns an object descriptor that represents the current state of
+ - `getDevices()` Returns a `DeviceList` of active devices
 
 
 ```
@@ -47,14 +46,20 @@ interface DeviceList {
 
 	getter Device? item(unsigned long index);
 
-		readonly attribute unsigned long length;
+	readonly attribute unsigned long length;
 
 	// ...
 };
 
 interface Device : EventTarget {
 
-	readonly attribute DOMStringMap state;
+	readonly attribute unsigned long id;
+
+
+	// Returns an object descriptor that represents the current state
+	DOMStringMap queryState()
+
+
 
 	// ...
 };
