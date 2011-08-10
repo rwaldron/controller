@@ -30,7 +30,9 @@ interface Controller : Device {
 	DeviceList getDevices();
 
 
+
 	Event createEvent(DOMString eventInterfaceName);
+
 };
 
 
@@ -45,7 +47,7 @@ interface DeviceList {
 
 	getter Device? item(unsigned long index);
 
-	readonly attribute unsigned long length;
+		readonly attribute unsigned long length;
 
 	// ...
 };
@@ -60,6 +62,37 @@ interface Device : EventTarget {
 ```
 
 
+
+```javascript
+
+// Usage. Includes array methods from ES.next
+
+var devices = Controller.getDevices();
+
+
+// event listening...
+Array.from( devices ).forEach(function( device ) {
+
+	device.addEventListener("interact", function( event ) {
+
+		console.log( event, device.getState() );
+
+	}, false );
+
+});
+
+// animation frame state query...
+function queryState() {
+
+	requestAnimationFrame( queryState );
+
+	var state = devices.item( 0 ).getState();
+
+	doSomethingWithControllerState( state );
+
+}
+
+queryState();
 
 
 
