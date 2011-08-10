@@ -34,9 +34,9 @@ The `Controller` object does not have a `[[Call]]` internal property; it is not 
 
 #### Events
 
- - buttondown (implemented as `MozJoyButtonDown`)
- - buttonup (implemented as `MozJoyButtonUp`)
- - axismove (implemented as `MozJoyAxisMove`)
+ - buttondown (`MozJoyButtonDown`)
+ - buttonup (`MozJoyButtonUp`)
+ - axismove (`MozJoyAxisMove`)
 
 
 ## Propose
