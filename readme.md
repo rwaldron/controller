@@ -20,7 +20,44 @@ The `Controller` object does not have a `[[Call]]` internal property; it is not 
 
 ## Function Properties of the Controller Object
 
- - `queryState()` Returns an object descriptor that represents the current state of
+  - `queryDevicesAll()` Returns a `NodeList`
+	- `queryState( deviceId )` Returns an object descriptor that represents the current state of
+
+
+```
+interface Controller : Device {
+
+	DeviceList getDevices();
+
+
+	Event createEvent(DOMString eventInterfaceName);
+};
+
+
+```
+
+Note:
+
+"DeviceList" does not exist, but represents a hypothetical collection interface for a hypothetical "Device" interface:
+
+```
+interface DeviceList {
+	getter Device? item(unsigned long index);
+	readonly attribute unsigned long length;
+
+	// ...
+};
+
+interface Device : EventTarget {
+
+	readonly attribute DOMStringMap state;
+
+	// ...
+};
+
+```
+
+
 
 
 
@@ -34,9 +71,9 @@ The `Controller` object does not have a `[[Call]]` internal property; it is not 
 
 #### Events
 
- - buttondown (`MozJoyButtonDown`)
- - buttonup (`MozJoyButtonUp`)
- - axismove (`MozJoyAxisMove`)
+ - **buttondown** (`MozJoyButtonDown`)
+ - **buttonup** (`MozJoyButtonUp`)
+ - **axismove** (`MozJoyAxisMove`)
 
 
 ## Propose
@@ -49,12 +86,14 @@ The event object of a `DeviceEvent` should provide a value property named `state
 
 The event object of a `DeviceEvent` should provide a value property named `type` who's value is a string that describes the event that occurred as result of of the user interacting with the device.
 
+The event object of a `DeviceEvent` should provide a value property named `type` who's value is a string that describes the event that occurred as result of of the user interacting with the device.
+
 
 #### Events
 
- - *interact*
- - *connect*
- - *disconnect*
+ - **interact** Dispatched whenever the user interacts with the device
+ - **connect**
+ - **disconnect**
 
 
 
